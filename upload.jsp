@@ -515,12 +515,12 @@
             const fileArray = Array.from(files);
             
             fileArray.forEach((file, index) => {
-                console.log(`파일 ${index + 1}: ${file.name} (${file.size} bytes)`);
+                console.log('파일 ' + (index + 1) + ': ' + file.name + ' (' + file.size + ' bytes)');
                 
                 // 파일 크기 검증
                 if (file.size > maxFileSize) {
-                    console.warn(`파일 크기 초과: ${file.name}`);
-                    showMessage(`파일 "${file.name}"이 너무 큽니다. (최대 10MB)`, 'error');
+                    console.warn('파일 크기 초과: ' + file.name);
+                    showMessage('파일 "' + file.name + '"이 너무 큽니다. (최대 10MB)', 'error');
                     return;
                 }
 
@@ -528,8 +528,8 @@
                 const fileName = file.name.toLowerCase();
                 const isForbidden = forbiddenExtensions.some(ext => fileName.endsWith(ext));
                 if (isForbidden) {
-                    console.warn(`금지된 확장자: ${file.name}`);
-                    showMessage(`파일 "${file.name}"은 보안상 업로드할 수 없습니다.`, 'error');
+                    console.warn('금지된 확장자: ' + file.name);
+                    showMessage('파일 "' + file.name + '"은 보안상 업로드할 수 없습니다.', 'error');
                     return;
                 }
 
@@ -537,9 +537,9 @@
                 const isDuplicate = selectedFiles.some(f => f.name === file.name && f.size === file.size);
                 if (!isDuplicate) {
                     selectedFiles.push(file);
-                    console.log(`✓ 파일 추가: ${file.name}`);
+                    console.log('✓ 파일 추가: ' + file.name);
                 } else {
-                    console.log(`중복 파일 무시: ${file.name}`);
+                    console.log('중복 파일 무시: ' + file.name);
                 }
             });
 
@@ -570,27 +570,27 @@
             fileList.innerHTML = '';
             console.log('✓ 파일 목록 컨테이너 표시');
 
-            selectedFiles.forEach((file, index) => {
-                console.log(`파일 ${index} UI 생성: ${file.name}`);
+            selectedFiles.forEach(function(file, index) {
+                console.log('파일 ' + index + ' UI 생성: ' + file.name);
                 
                 const fileItem = document.createElement('div');
                 fileItem.className = 'file-item';
                 
                 const fileIcon = getFileIcon(file.name);
                 const fileSize = formatFileSize(file.size);
+                const escapedFileName = escapeHtml(file.name);
 
-                fileItem.innerHTML = `
-                    <div class="file-info">
-                        <div class="file-icon">${fileIcon}</div>
-                        <div class="file-details">
-                            <div class="file-name">${escapeHtml(file.name)}</div>
-                            <div class="file-size">${fileSize}</div>
-                        </div>
-                    </div>
-                    <div class="remove-file" onclick="removeFile(${index})">
-                        🗑️
-                    </div>
-                `;
+                // EL 충돌을 피하기 위해 문자열 연결 사용
+                fileItem.innerHTML = '<div class="file-info">' +
+                    '<div class="file-icon">' + fileIcon + '</div>' +
+                    '<div class="file-details">' +
+                        '<div class="file-name">' + escapedFileName + '</div>' +
+                        '<div class="file-size">' + fileSize + '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="remove-file" onclick="removeFile(' + index + ')">' +
+                    '🗑️' +
+                '</div>';
 
                 fileList.appendChild(fileItem);
             });
@@ -600,7 +600,7 @@
         }
 
         function removeFile(index) {
-            console.log('파일 제거:', selectedFiles[index]?.name);
+            console.log('파일 제거:', selectedFiles[index] ? selectedFiles[index].name : 'undefined');
             selectedFiles.splice(index, 1);
             updateFileList();
             updateUploadButton();
@@ -695,13 +695,13 @@
                 statusDiv.style.display = 'block';
                 
                 if (type === 'success') {
-                    setTimeout(() => {
+                    setTimeout(function() {
                         hideMessage();
                     }, 5000);
                 }
             }
             
-            console.log(`메시지 [${type}]: ${message}`);
+            console.log('메시지 [' + type + ']: ' + message);
         }
 
         function hideMessage() {
@@ -725,7 +725,7 @@
                 formData.append('path', pathInput.value);
             }
             
-            selectedFiles.forEach(file => {
+            selectedFiles.forEach(function(file) {
                 formData.append('uploadFiles', file);
             });
 
@@ -746,7 +746,7 @@
             xhr.upload.addEventListener('progress', function(e) {
                 if (e.lengthComputable) {
                     const percentComplete = (e.loaded / e.total) * 100;
-                    updateProgress(percentComplete, `업로드 중... (${selectedFiles.length}개 파일)`);
+                    updateProgress(percentComplete, '업로드 중... (' + selectedFiles.length + '개 파일)');
                 }
             });
 
@@ -757,7 +757,7 @@
                     updateProgress(100, '업로드 완료!');
                     showMessage('파일 업로드가 완료되었습니다! 잠시 후 파일 목록으로 이동합니다.', 'success');
                     
-                    setTimeout(() => {
+                    setTimeout(function() {
                         const pathInput = document.querySelector('input[name="path"]');
                         const pathParam = pathInput && pathInput.value ? '?path=' + pathInput.value : '';
                         window.location.href = 'downlist.jsp' + pathParam;
