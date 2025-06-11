@@ -35,25 +35,6 @@
                         </a>
                     </li>
                     
-                    <!-- 자료관리 드롭다운 -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle ${pageTitle eq '업무자료' || pageTitle eq '회의자료' || pageTitle eq '기타자료' ? 'active' : ''}">
-                            <i class="fas fa-folder mr-1"></i>자료관리
-                            <!-- <i class="fas fa-caret-down ml-1"></i> -->
-                        </a>	
-                        <ul class="dropdown-menu">
-                            <li>
-							    <a href="${pageContext.request.contextPath}/meeting?view=list">
-							        <i class="fas fa-clipboard-list mr-2"></i>회의록	
-							    </a>
-							</li>
-                            <li>
-                                <a href="${pageContext.request.contextPath}/downlist.jsp">
-                                    <i class="fas fa-file-alt mr-2"></i>설치자료
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                     
                     <!-- 고객관리 드롭다운 -->
                     <li class="dropdown">
@@ -70,6 +51,30 @@
                             <li>
                                 <a href="${pageContext.request.contextPath}/maintenance">
                                     <i class="fas fa-clipboard-check mr-2"></i>정기점검 이력
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                                        <!-- 자료관리 드롭다운 -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle ${pageTitle eq '업무자료' || pageTitle eq '회의자료' || pageTitle eq '기타자료' ? 'active' : ''}">
+                            <i class="fas fa-folder mr-1"></i>자료관리
+                            <!-- <i class="fas fa-caret-down ml-1"></i> -->
+                        </a>	
+                        <ul class="dropdown-menu">
+                            <li>
+							    <a href="${pageContext.request.contextPath}/meeting?view=list">
+							        <i class="fas fa-clipboard-list mr-2"></i>회의록	
+							    </a>
+							</li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/downlist.jsp">
+                                    <i class="fas fa-file-alt mr-2"></i>자료실
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/troubleshooting?view=list">
+                                    <i class="fas fa-file-alt mr-2"></i>트러블슈팅
                                 </a>
                             </li>
                         </ul>
