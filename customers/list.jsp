@@ -13,6 +13,38 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
+    /* 테이블 강제 스타일 적용 */
+    .customer-table {
+        width: 100% !important;
+        max-width: 1000px !important;
+        border-collapse: collapse !important;
+        font-size: 14px !important;
+        table-layout: fixed !important;
+        display: table !important;
+    }
+    
+    .customer-table thead {
+        display: table-header-group !important;
+    }
+    
+    .customer-table tbody {
+        display: table-row-group !important;
+    }
+    
+    .customer-table tr {
+        display: table-row !important;
+    }
+    
+    .customer-table th,
+    .customer-table td {
+        display: table-cell !important;
+        vertical-align: middle !important;
+        padding: 0.75rem 0.5rem !important;
+        border-right: 1px solid #f3f4f6 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
     .page-header {
         background: #ffffff;
         color: #2c3e50;
@@ -79,6 +111,165 @@
         border-left: 4px solid #ef4444;
     }
     
+    /* 필터 토글 버튼 스타일 */
+    .filter-section {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e5e7eb;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .filter-toggle {
+        display: flex;
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 0.25rem;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        background: transparent;
+        color: #64748b;
+        font-weight: 500;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    
+    .filter-btn.active {
+        background: #4f46e5;
+        color: white;
+        box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+    }
+    
+    .filter-btn:hover:not(.active) {
+        background: #e2e8f0;
+        color: #475569;
+    }
+    
+    .filter-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #64748b;
+        font-size: 14px;
+    }
+    
+    .filter-count {
+        background: #f8fafc;
+        color: #374151;
+        padding: 0.25rem 0.75rem;
+        border-radius: 6px;
+        font-weight: 600;
+        border: 1px solid #e5e7eb;
+    }
+    
+    /* 검색 섹션 스타일 */
+    .search-section {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e5e7eb;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .search-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .search-input-wrapper {
+        position: relative;
+        flex: 1;
+        max-width: 400px;
+    }
+    
+    .search-input {
+        width: 100%;
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 14px;
+        background: #fafbfc;
+        transition: all 0.2s ease;
+        box-sizing: border-box;
+    }
+    
+    .search-input:focus {
+        outline: none;
+        border-color: #4f46e5;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+    
+    .search-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        font-size: 14px;
+        pointer-events: none;
+    }
+    
+    .clear-search {
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #9ca3af;
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: 4px;
+        display: none;
+        transition: all 0.2s ease;
+    }
+    
+    .clear-search:hover {
+        color: #ef4444;
+        background: #fef2f2;
+    }
+    
+    .search-stats {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #6b7280;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    .search-count {
+        background: #f3f4f6;
+        color: #374151;
+        padding: 0.25rem 0.75rem;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+    
+    .search-highlight {
+        background: #fef3c7;
+        color: #92400e;
+        padding: 0.1rem 0.2rem;
+        border-radius: 3px;
+        font-weight: 600;
+    }
+    
     .table-container {
         background: white;
         border-radius: 12px;
@@ -101,17 +292,18 @@
     }
     
     .customer-table th {
-        background: #f8fafc;
-        color: #374151;
-        font-weight: 600;
-        padding: 1rem 0.5rem;
-        text-align: center;
-        border-bottom: 1px solid #e5e7eb;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        white-space: nowrap;
-        font-size: 13px;
+        background: #f8fafc !important;
+        color: #374151 !important;
+        font-weight: 600 !important;
+        padding: 1rem 0.5rem !important;
+        text-align: center !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 10 !important;
+        white-space: nowrap !important;
+        font-size: 13px !important;
+        display: table-cell !important;
     }
     
     /* 컬럼별 너비 지정 */
@@ -150,28 +342,34 @@
     }
     
     .customer-table tbody tr {
-        transition: all 0.2s ease;
-        border-bottom: 1px solid #f3f4f6;
-        cursor: pointer;
+        transition: all 0.2s ease !important;
+        border-bottom: 1px solid #f3f4f6 !important;
+        cursor: pointer !important;
+        display: table-row !important;
     }
     
     .customer-table tbody tr:nth-child(even) {
-        background-color: #fafbfc;
+        background-color: #fafbfc !important;
     }
     
     .customer-table tbody tr:hover {
-        background-color: #f0f9ff;
-        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.08);
+        background-color: #f0f9ff !important;
+        box-shadow: 0 2px 8px rgba(79, 70, 229, 0.08) !important;
+    }
+    
+    .customer-table tbody tr.hidden {
+        display: none !important;
     }
     
     .customer-table td {
-        padding: 0.75rem 0.5rem;
-        border-right: 1px solid #f3f4f6;
-        vertical-align: middle;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: #374151;
-        font-size: 13px;
+        padding: 0.75rem 0.5rem !important;
+        border-right: 1px solid #f3f4f6 !important;
+        vertical-align: middle !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        color: #374151 !important;
+        font-size: 13px !important;
+        display: table-cell !important;
     }
     
     .customer-table td:last-child {
@@ -252,6 +450,28 @@
         opacity: 0.5;
     }
     
+    .no-results {
+        text-align: center;
+        padding: 3rem;
+        color: #6b7280;
+    }
+    
+    .no-results i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #d1d5db;
+    }
+    
+    .no-results h3 {
+        color: #374151;
+        margin-bottom: 0.5rem;
+    }
+    
+    .no-results p {
+        color: #6b7280;
+        margin: 0;
+    }
+    
     /* 반응형 디자인 */
     @media (max-width: 768px) {
         .customer-management {
@@ -265,6 +485,38 @@
         
         .page-header h1 {
             font-size: 1.5rem;
+        }
+        
+        .filter-section {
+            padding: 1rem;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .filter-toggle {
+            justify-content: center;
+        }
+        
+        .filter-info {
+            justify-content: center;
+        }
+        
+        .search-section {
+            padding: 1rem;
+        }
+        
+        .search-container {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 1rem;
+        }
+        
+        .search-input-wrapper {
+            max-width: none;
+        }
+        
+        .search-stats {
+            justify-content: center;
         }
         
         .customer-table {
@@ -292,8 +544,19 @@
     <div class="page-header">
         <div class="d-flex justify-content-between align-items-center">
             <div>
-                <h1><i class="fas fa-building"></i> 고객사 정보 </h1>
-                <p class="lead">등록된 고객사: <strong>${customerList.size()}</strong>개</p>
+                <h1><i class="fas fa-building"></i> 고객사 정보</h1>
+                <p class="lead">
+                    <c:choose>
+                        <c:when test="${filter == 'maintenance'}">
+                            정기점검 고객사: <strong>${currentCount}</strong>개 
+                            <span style="color: #9ca3af;">(전체: ${totalCount}개)</span>
+                        </c:when>
+                        <c:otherwise>
+                            전체 고객사: <strong>${currentCount}</strong>개 
+                            <span style="color: #9ca3af;">(정기점검: ${maintenanceCount}개)</span>
+                        </c:otherwise>
+                    </c:choose>
+                </p>
             </div>
             <div>
                 <a href="${pageContext.request.contextPath}/customers?view=add" class="add-button">
@@ -321,55 +584,106 @@
 	    <c:remove var="error" scope="session" />
 	</c:if>
     
+    <!-- 필터 섹션 -->
+    <div class="filter-section">
+        <div class="filter-toggle">
+            <button class="filter-btn ${filter == 'maintenance' ? 'active' : ''}" 
+                    onclick="changeFilter('maintenance')">
+                <i class="fas fa-clipboard-check"></i>
+                정기점검만 보기
+            </button>
+            <button class="filter-btn ${filter == 'all' ? 'active' : ''}" 
+                    onclick="changeFilter('all')">
+                <i class="fas fa-list"></i>
+                전체 보기
+            </button>
+        </div>
+        <div class="filter-info">
+            <i class="fas fa-info-circle"></i>
+            <span class="filter-count">
+                <c:choose>
+                    <c:when test="${filter == 'maintenance'}">
+                        정기점검 ${currentCount}개 표시 중
+                    </c:when>
+                    <c:otherwise>
+                        전체 ${currentCount}개 표시 중
+                    </c:otherwise>
+                </c:choose>
+            </span>
+        </div>
+    </div>
+    
+    <!-- 검색 섹션 -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" 
+                       id="search-input" 
+                       class="search-input" 
+                       placeholder="고객사명, 버전, OS, 담당자 등으로 검색..."
+                       autocomplete="off">
+                <button type="button" id="clear-search" class="clear-search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-stats">
+                <i class="fas fa-filter"></i>
+                <span id="search-count" class="search-count">전체</span>
+                <span id="search-text">결과 표시 중</span>
+            </div>
+        </div>
+    </div>
+    
     <div class="table-container">
         <div class="table-wrapper">
             <table class="customer-table">
                 <thead>
                     <tr>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=customer_name&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('customer_name')">
                                 고객사
                                 <i class="fas fa-sort sort-icon ${sortField == 'customer_name' ? 'active' : ''}"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=vertica_version&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('vertica_version')">
                                 버전
                                 <i class="fas fa-sort sort-icon ${sortField == 'vertica_version' ? 'active' : ''}"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=mode&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('mode')">
                                 모드
                                 <i class="fas fa-sort sort-icon ${sortField == 'mode' ? 'active' : ''}"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=os&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('os')">
                                 OS
                                 <i class="fas fa-sort sort-icon ${sortField == 'os' ? 'active' : ''}"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=nodes&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('nodes')">
                                 노드수
                                 <i class="fas fa-sort sort-icon ${sortField == 'nodes' ? 'active' : ''}"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=license_size&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('license_size')">
                                 라이선스
                                 <i class="fas fa-sort sort-icon ${sortField == 'license_size' ? 'active' : ''}"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=said&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('said')">
                                 SAID
                                 <i class="fas fa-sort sort-icon ${sortField == 'said' ? 'active' : ''}"></i>
                             </a>
                         </th>
                         <th>
-                            <a href="${pageContext.request.contextPath}/customers?view=list&sortField=manager_name&sortDirection=${sortDirection == 'ASC' ? 'DESC' : 'ASC'}">
+                            <a href="javascript:void(0)" onclick="sortTable('manager_name')">
                                 담당자
                                 <i class="fas fa-sort sort-icon ${sortField == 'manager_name' ? 'active' : ''}"></i>
                             </a>
@@ -377,17 +691,18 @@
                         <th>작업</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="customer-table-body">
                     <c:forEach var="customer" items="${customerList}">
-                        <tr>
-                            <td title="${customer.customerName}">${customer.customerName}</td>
-                            <td>${customer.verticaVersion}</td>
-                            <td>${customer.mode}</td>
-                            <td>${customer.os}</td>
-                            <td>${customer.nodes}</td>
-                            <td>${customer.licenseSize}</td>
-                            <td>${customer.said}</td>
-                            <td title="${customer.managerName}">${customer.managerName}</td>
+                        <tr class="customer-row" 
+                            data-search-text="${customer.customerName} ${customer.verticaVersion} ${customer.mode} ${customer.os} ${customer.nodes} ${customer.licenseSize} ${customer.said} ${customer.managerName}">
+                            <td title="${customer.customerName}" data-original="${not empty customer.customerName ? customer.customerName : ''}">${not empty customer.customerName ? customer.customerName : ''}</td>
+                            <td data-original="${not empty customer.verticaVersion ? customer.verticaVersion : ''}">${not empty customer.verticaVersion ? customer.verticaVersion : ''}</td>
+                            <td data-original="${not empty customer.mode ? customer.mode : ''}">${not empty customer.mode ? customer.mode : ''}</td>
+                            <td data-original="${not empty customer.os ? customer.os : ''}">${not empty customer.os ? customer.os : ''}</td>
+                            <td data-original="${not empty customer.nodes ? customer.nodes : ''}">${not empty customer.nodes ? customer.nodes : ''}</td>
+                            <td data-original="${not empty customer.licenseSize ? customer.licenseSize : ''}">${not empty customer.licenseSize ? customer.licenseSize : ''}</td>
+                            <td data-original="${not empty customer.said ? customer.said : ''}">${not empty customer.said ? customer.said : ''}</td>
+                            <td title="${customer.managerName}" data-original="${not empty customer.managerName ? customer.managerName : ''}">${not empty customer.managerName ? customer.managerName : ''}</td>
 							<td>
 							    <div class="action-buttons">
 							        <a href="javascript:void(0)" onclick="viewDetail('${customer.customerName}')" 
@@ -407,28 +722,46 @@
                     </c:forEach>
                     
                     <c:if test="${empty customerList}">
-                        <tr>
+                        <tr id="empty-state">
                             <td colspan="9" class="empty-state">
                                 <i class="fas fa-inbox"></i>
-                                <div>등록된 고객사 정보가 없습니다.</div>
+                                <div>
+                                    <c:choose>
+                                        <c:when test="${filter == 'maintenance'}">
+                                            등록된 정기점검 고객사가 없습니다.
+                                        </c:when>
+                                        <c:otherwise>
+                                            등록된 고객사 정보가 없습니다.
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
                             </td>
                         </tr>
                     </c:if>
                 </tbody>
             </table>
+            
+            <!-- 검색 결과 없음 메시지 -->
+            <div id="no-results" class="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>검색 결과가 없습니다</h3>
+                <p>다른 검색어로 다시 시도해보세요.</p>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
+    // 전역 변수
+    var currentFilter = "${filter}";
+    var currentSortField = "${sortField}";
+    var currentSortDirection = "${sortDirection}";
+    
     // jQuery 준비 완료 시 실행
     $(document).ready(function() {
-        var sortField = "${sortField}";
-        var sortDirection = "${sortDirection}";
-        
-        if (sortField && sortDirection) {
-            var icon = $("a[href*='sortField=" + sortField + "']").find(".sort-icon");
-            icon.removeClass("fa-sort").addClass(sortDirection === "ASC" ? "fa-sort-up" : "fa-sort-down");
+        if (currentSortField && currentSortDirection) {
+            var activeIcon = $('.sort-icon.active');
+            activeIcon.removeClass("fa-sort").addClass(currentSortDirection === "ASC" ? "fa-sort-up" : "fa-sort-down");
         }
         
         // 테이블 로딩 애니메이션
@@ -444,7 +777,161 @@
                 }
             }
         );
+        
+        // 검색 기능 초기화
+        initializeSearch();
     });
+    
+    // 필터 변경 함수
+    function changeFilter(filter) {
+        var url = '${pageContext.request.contextPath}/customers?view=list&filter=' + filter;
+        if (currentSortField) {
+            url += '&sortField=' + currentSortField + '&sortDirection=' + currentSortDirection;
+        }
+        window.location.href = url;
+    }
+    
+    // 정렬 함수
+    function sortTable(field) {
+        var direction = 'ASC';
+        if (currentSortField === field && currentSortDirection === 'ASC') {
+            direction = 'DESC';
+        }
+        
+        var url = '${pageContext.request.contextPath}/customers?view=list&filter=' + currentFilter + 
+                  '&sortField=' + field + '&sortDirection=' + direction;
+        window.location.href = url;
+    }
+    
+    // 검색 기능 초기화
+    function initializeSearch() {
+        const searchInput = document.getElementById('search-input');
+        const clearButton = document.getElementById('clear-search');
+        const searchCount = document.getElementById('search-count');
+        const searchText = document.getElementById('search-text');
+        const totalCount = ${currentCount};
+        
+        // 실시간 검색
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            performSearch(searchTerm);
+            
+            // Clear 버튼 표시/숨김
+            if (searchTerm) {
+                clearButton.style.display = 'block';
+            } else {
+                clearButton.style.display = 'none';
+            }
+        });
+        
+        // 검색 초기화
+        clearButton.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+            performSearch('');
+            this.style.display = 'none';
+        });
+        
+        // Enter 키 처리
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                clearButton.click();
+            }
+        });
+        
+        // 검색 수행 함수
+        function performSearch(searchTerm) {
+            const rows = document.querySelectorAll('.customer-row');
+            const noResultsDiv = document.getElementById('no-results');
+            const emptyState = document.getElementById('empty-state');
+            let visibleCount = 0;
+            
+            // 모든 하이라이트 제거
+            removeAllHighlights();
+            
+            rows.forEach(row => {
+                if (!searchTerm) {
+                    // 검색어가 없으면 모든 행 표시
+                    row.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    // 검색어가 있으면 검색 수행
+                    const searchText = row.getAttribute('data-search-text').toLowerCase();
+                    
+                    if (searchText.includes(searchTerm)) {
+                        row.classList.remove('hidden');
+                        highlightSearchTerm(row, searchTerm);
+                        visibleCount++;
+                    } else {
+                        row.classList.add('hidden');
+                    }
+                }
+            });
+            
+            // 검색 결과 통계 업데이트
+            updateSearchStats(visibleCount, totalCount, searchTerm);
+            
+            // 검색 결과 없음 메시지 표시/숨김
+            if (totalCount > 0) {
+                if (visibleCount === 0 && searchTerm) {
+                    noResultsDiv.style.display = 'block';
+                    if (emptyState) emptyState.style.display = 'none';
+                } else {
+                    noResultsDiv.style.display = 'none';
+                    if (emptyState && visibleCount > 0) emptyState.style.display = 'none';
+                }
+            }
+        }
+        
+        // 검색어 하이라이트
+        function highlightSearchTerm(row, searchTerm) {
+            const cells = row.querySelectorAll('td[data-original]');
+            
+            cells.forEach(cell => {
+                const originalText = cell.getAttribute('data-original') || '';
+                const lowerText = originalText.toLowerCase();
+                const lowerSearchTerm = searchTerm.toLowerCase();
+                
+                if (originalText && lowerText.includes(lowerSearchTerm)) {
+                    const startIndex = lowerText.indexOf(lowerSearchTerm);
+                    const endIndex = startIndex + lowerSearchTerm.length;
+                    
+                    const beforeMatch = originalText.substring(0, startIndex);
+                    const match = originalText.substring(startIndex, endIndex);
+                    const afterMatch = originalText.substring(endIndex);
+                    
+                    cell.innerHTML = beforeMatch + 
+                        '<span class="search-highlight">' + match + '</span>' + 
+                        afterMatch;
+                } else if (originalText) {
+                    cell.textContent = originalText;
+                }
+            });
+        }
+        
+        // 모든 하이라이트 제거
+        function removeAllHighlights() {
+            const rows = document.querySelectorAll('.customer-row');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td[data-original]');
+                cells.forEach(cell => {
+                    const originalText = cell.getAttribute('data-original') || '';
+                    cell.textContent = originalText;
+                });
+            });
+        }
+        
+        // 검색 통계 업데이트
+        function updateSearchStats(visibleCount, totalCount, searchTerm) {
+            if (!searchTerm) {
+                searchCount.textContent = '전체';
+                searchText.textContent = '결과 표시 중';
+            } else {
+                searchCount.textContent = visibleCount + '/' + totalCount;
+                searchText.textContent = '검색 결과';
+            }
+        }
+    }
     
     // 고객사 상세보기 페이지로 이동
     function viewDetail(customerName) {

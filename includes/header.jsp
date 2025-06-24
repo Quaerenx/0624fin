@@ -8,7 +8,7 @@
     <!-- 기본 스타일시트 임포트 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_style.css">
     <!-- 아카이브 스타일시트 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/archive_style.css">
+	<%--     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/archive_style.css"> --%>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- jQuery -->
