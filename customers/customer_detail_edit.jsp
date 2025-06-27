@@ -7,7 +7,7 @@
 
 <style>
     .customer-detail {
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 20px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -780,11 +780,17 @@
                     <div class="detail-item">
                         <span class="detail-label">고객 유형</span>
                         <div class="detail-value">
-                            <input type="text" class="form-control" name="customerType" 
-                                   value="${not empty customerDetail.customerType ? customerDetail.customerType : customer.customerType}" 
-                                   placeholder="고객 유형을 입력하세요">
+                        	<select class="form-control" name="customerType">
+                        	  <option value="">선택하세요</option>
+                                <option value="정기점검 계약 고객사" ${(not empty customerDetail.customerType and customerDetail.customerType == '정기점검 계약 고객사') or (empty customerDetail.customerType and customer.customerType == '정기점검 계약 고객사') ? 'selected' : ''}>정기점검 계약 고객사</option>
+                                <option value="납품 계약 고객사" ${(not empty customerDetail.customerType and customerDetail.customerType == '납품 계약 고객사') or (empty customerDetail.customerType and customer.customerType == '납품 계약 고객사') ? 'selected' : ''}>납품 계약 고객사</option>
+                                <option value="유지보수 종료 고객사" ${(not empty customerDetail.customerType and customerDetail.customerType == '유지보수 종료 고객사') or (empty customerDetail.customerType and customer.customerType == '유지보수 종료 고객사') ? 'selected' : ''}>유지보수 종료 고객사</option>
+                            </select>
                         </div>
                     </div>
+
+                   
+                    
                 </div>
                 <div class="detail-item full-width" style="margin-top: 1rem;">
                     <span class="detail-label">비고</span>

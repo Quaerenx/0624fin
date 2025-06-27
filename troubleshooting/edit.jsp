@@ -5,11 +5,12 @@
 <c:set var="pageTitle" value="트러블 슈팅 수정" scope="request" />
 <%@ include file="/includes/header.jsp" %>
 
-<div class="container">
-    <div class="page-header">
-        <h2><i class="fas fa-edit"></i> 트러블 슈팅 수정</h2>
-        <p>"<strong>${troubleshooting.title}</strong>" 정보를 수정합니다.</p>
-    </div>
+<div class="edit-page">
+    <div class="container">
+        <div class="page-header">
+            <h2><i class="fas fa-edit"></i> 트러블 슈팅 수정</h2>
+            <p>"<strong>${troubleshooting.title}</strong>" 정보를 수정합니다.</p>
+        </div>
     
     <!-- 오류 메시지 -->
     <c:if test="${not empty error}">
@@ -147,32 +148,35 @@
         </form>
     </div>
 </div>
+</div>
 
 <style>
-/* 기본 레이아웃 */
-.container {
+/* edit.jsp의 <style> 태그 내용을 다음과 같이 수정하세요 */
+
+/* 모든 스타일을 .edit-page 클래스 하위로 제한 */
+.edit-page .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.page-header {
+.edit-page .page-header {
     margin-bottom: 30px;
     text-align: center;
 }
 
-.page-header h2 {
+.edit-page .page-header h2 {
     color: #333;
     margin-bottom: 10px;
 }
 
-.page-header p {
+.edit-page .page-header p {
     color: #666;
     margin: 0;
 }
 
 /* 폼 컨테이너 */
-.form-container {
+.edit-page .form-container {
     background: white;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -181,7 +185,7 @@
 }
 
 /* 섹션 제목 */
-.section-title {
+.edit-page .section-title {
     font-size: 16px;
     font-weight: bold;
     color: #333;
@@ -190,27 +194,27 @@
     border-bottom: 2px solid #007bff;
 }
 
-.section-title:first-child {
+.edit-page .section-title:first-child {
     margin-top: 0;
 }
 
 /* 폼 행 */
-.form-row {
+.edit-page .form-row {
     display: flex;
     gap: 20px;
     margin-bottom: 15px;
 }
 
-.form-group {
+.edit-page .form-group {
     flex: 1;
 }
 
-.form-group.full-width {
+.edit-page .form-group.full-width {
     flex: 1 1 100%;
 }
 
 /* 라벨 */
-.form-group label {
+.edit-page .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: 500;
@@ -218,14 +222,14 @@
     font-size: 14px;
 }
 
-.required {
+.edit-page .required {
     color: #dc3545;
 }
 
 /* 입력 필드 */
-.form-group input,
-.form-group select,
-.form-group textarea {
+.edit-page .form-group input,
+.edit-page .form-group select,
+.edit-page .form-group textarea {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #ddd;
@@ -236,29 +240,29 @@
     box-sizing: border-box;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.edit-page .form-group input:focus,
+.edit-page .form-group select:focus,
+.edit-page .form-group textarea:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
 }
 
-.form-group textarea {
+.edit-page .form-group textarea {
     resize: vertical;
     min-height: 80px;
     font-family: monospace;
 }
 
 /* 버튼 그룹 */
-.button-group {
+.edit-page .button-group {
     text-align: center;
     margin-top: 30px;
     padding-top: 20px;
     border-top: 1px solid #eee;
 }
 
-.btn {
+.edit-page .btn {
     display: inline-block;
     padding: 12px 24px;
     margin: 0 5px;
@@ -271,44 +275,44 @@
     transition: all 0.2s;
 }
 
-.btn-primary {
+.edit-page .btn-primary {
     background: #007bff;
     color: white;
 }
 
-.btn-primary:hover {
+.edit-page .btn-primary:hover {
     background: #0056b3;
 }
 
-.btn-secondary {
+.edit-page .btn-secondary {
     background: #6c757d;
     color: white;
 }
 
-.btn-secondary:hover {
+.edit-page .btn-secondary:hover {
     background: #545b62;
     text-decoration: none;
 }
 
-.btn-cancel {
+.edit-page .btn-cancel {
     background: #6c757d;
     color: white;
 }
 
-.btn-cancel:hover {
+.edit-page .btn-cancel:hover {
     background: #545b62;
     text-decoration: none;
 }
 
 /* 알림 메시지 */
-.alert {
+.edit-page .alert {
     padding: 12px 16px;
     margin-bottom: 20px;
     border-radius: 4px;
     border: 1px solid transparent;
 }
 
-.alert-danger {
+.edit-page .alert-danger {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
@@ -316,28 +320,28 @@
 
 /* 반응형 */
 @media (max-width: 768px) {
-    .container {
+    .edit-page .container {
         padding: 15px;
     }
     
-    .form-container {
+    .edit-page .form-container {
         padding: 20px;
     }
     
-    .form-row {
+    .edit-page .form-row {
         flex-direction: column;
         gap: 10px;
     }
     
-    .form-group {
+    .edit-page .form-group {
         flex: none;
     }
     
-    .button-group {
+    .edit-page .button-group {
         text-align: stretch;
     }
     
-    .btn {
+    .edit-page .btn {
         display: block;
         width: 100%;
         margin: 5px 0;

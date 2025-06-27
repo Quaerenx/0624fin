@@ -7,7 +7,7 @@
 
 <style>
     .troubleshooting-detail {
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 20px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,7 +23,7 @@
         border: 1px solid #e8ecef;
     }
     
-    .page-header h1 {
+    .page-header h1 {	
         margin: 0 0 0.5rem 0;
         font-size: 1.75rem;
         font-weight: 700;
@@ -146,11 +146,11 @@
         gap: 0.5rem;
     }
     
-    .detail-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1rem;
-    }
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2열 고정 */
+    gap: 1rem;
+}
     
     .detail-item {
         display: flex;
@@ -192,20 +192,20 @@
         margin-bottom: 8px;
     }
     
-    .detail-item.full-width .detail-value {
-        text-align: left;
-        width: 100%;
-        margin-left: 0;
-        background: #f9fafb;
-        padding: 12px;
-        border-radius: 6px;
-        border: 1px solid #e5e7eb;
-        min-height: 60px;
-        white-space: pre-wrap;
-        font-family: 'Courier New', monospace;
-        font-size: 13px;
-        line-height: 1.4;
-    }
+	.detail-item.full-width .detail-value {
+	    text-align: left;
+	    width: 100%;
+	    margin-left: 0;
+	    background: #f9fafb;
+	    padding: 12px;
+	    border-radius: 6px;
+	    border: 1px solid #e5e7eb;
+	    min-height: 60px;
+	    white-space: pre-line;  /* pre-wrap을 pre-line으로 변경 */
+	    font-family: 'Courier New', monospace;
+	    font-size: 13px;
+	    line-height: 1.4;
+	}
     
     .empty-value {
         color: #9ca3af;

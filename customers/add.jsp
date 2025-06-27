@@ -112,15 +112,30 @@
                 </div>
             </div>
             
-            <div class="form-row">
+<!--             <div class="form-row">
                 <div class="form-group">
                     <label for="customer_type">고객 유형</label>
                     <input type="text" id="customer_type" name="customer_type">
                 </div>
                 <div class="form-group">
-                    <!-- 빈 칸으로 두어 균형 맞춤 -->
+                    빈 칸으로 두어 균형 맞춤
                 </div>
             </div>
+             -->
+			<div class="form-row">
+			    <div class="form-group">
+			        <label for="customer_type">고객 유형</label>
+			        <select class="form-control" id="customer_type" name="customer_type">
+			            <option value="">선택하세요</option>
+			            <option value="정기점검 계약 고객사" ${customer.customerType == '정기점검 계약 고객사' ? 'selected' : ''}>정기점검 계약 고객사</option>
+			            <option value="납품 계약 고객사" ${customer.customerType == '납품 계약 고객사' ? 'selected' : ''}>납품 계약 고객사</option>
+			            <option value="유지보수 종료 고객사" ${customer.customerType == '유지보수 종료 고객사' ? 'selected' : ''}>유지보수 종료 고객사</option>
+			        </select>
+			    </div>
+			    <div class="form-group">
+			        <!-- 빈 칸으로 두어 균형 맞춤 -->
+			    </div>
+			</div>
             
             <!-- 외부 솔루션 -->
             <div class="section-title">외부 솔루션</div>

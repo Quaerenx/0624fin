@@ -4,169 +4,172 @@
 <c:set var="pageTitle" value="트러블 슈팅 등록" scope="request" />
 <%@ include file="/includes/header.jsp" %>
 
-<div class="container">
-    <div class="page-header">
-        <h2><i class="fas fa-plus-circle"></i> 새 트러블 슈팅 등록</h2>
-        <p>기술지원 및 문제 해결 정보를 입력해주세요.</p>
-    </div>
-    
-    <!-- 오류 메시지 -->
-    <c:if test="${not empty error}">
-        <div class="alert alert-danger">
-            <i class="fas fa-exclamation-circle"></i> ${error}
+<!-- 전체를 add-page 클래스로 감싸기 -->
+<div class="add-page">
+    <div class="container">
+        <div class="page-header">
+            <h2><i class="fas fa-plus-circle"></i> 새 트러블 슈팅 등록</h2>
+            <p>기술지원 및 문제 해결 정보를 입력해주세요.</p>
         </div>
-    </c:if>
-    
-    <!-- 등록 폼 -->
-    <div class="form-container">
-        <form method="post" action="${pageContext.request.contextPath}/troubleshooting">
-            <input type="hidden" name="action" value="add">
-            
-            <!-- 기본작성 항목 -->
-            <div class="section-title">기본작성 항목</div>
-            
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="title">제목 <span class="required">*</span></label>
-                    <input type="text" id="title" name="title" required placeholder="문제 상황을 간략히 입력하세요">
-                </div>
+        
+        <!-- 오류 메시지 -->
+        <c:if test="${not empty error}">
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle"></i> ${error}
             </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="customer_name">고객사 <span class="required">*</span></label>
-                    <select id="customer_name" name="customer_name" required>
-                        <option value="">고객사를 선택하세요</option>
-                        <c:forEach var="customer" items="${customerList}">
-                            <option value="${customer.customerName}">${customer.customerName}</option>
-                        </c:forEach>
-                    </select>
+        </c:if>
+        
+        <!-- 등록 폼 -->
+        <div class="form-container">
+            <form method="post" action="${pageContext.request.contextPath}/troubleshooting">
+                <input type="hidden" name="action" value="add">
+                
+                <!-- 기본작성 항목 -->
+                <div class="section-title">기본작성 항목</div>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="title">제목 <span class="required">*</span></label>
+                        <input type="text" id="title" name="title" required placeholder="문제 상황을 간략히 입력하세요">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="occurrence_date">발생일자</label>
-                    <input type="date" id="occurrence_date" name="occurrence_date">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customer_name">고객사 <span class="required">*</span></label>
+                        <select id="customer_name" name="customer_name" required>
+                            <option value="">고객사를 선택하세요</option>
+                            <c:forEach var="customer" items="${customerList}">
+                                <option value="${customer.customerName}">${customer.customerName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="occurrence_date">발생일자</label>
+                        <input type="date" id="occurrence_date" name="occurrence_date">
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="customer_manager">고객사 담당자</label>
-                    <input type="text" id="customer_manager" name="customer_manager" placeholder="고객사 담당자명">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customer_manager">고객사 담당자</label>
+                        <input type="text" id="customer_manager" name="customer_manager" placeholder="고객사 담당자명">
+                    </div>
+                    <div class="form-group">
+                        <label for="work_period">작업기간</label>
+                        <input type="text" id="work_period" name="work_period" placeholder="예: 2시간, 1일">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="work_period">작업기간</label>
-                    <input type="text" id="work_period" name="work_period" placeholder="예: 2시간, 1일">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="work_personnel">작업인원</label>
+                        <input type="text" id="work_personnel" name="work_personnel" placeholder="작업에 참여한 인원">
+                    </div>
+                    <div class="form-group">
+                        <label for="support_type">지원형태</label>
+                        <select id="support_type" name="support_type">
+                            <option value="">선택하세요</option>
+                            <option value="방문">방문</option>
+                            <option value="원격">원격</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="work_personnel">작업인원</label>
-                    <input type="text" id="work_personnel" name="work_personnel" placeholder="작업에 참여한 인원">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="case_open_yn">케이스오픈 여부</label>
+                        <select id="case_open_yn" name="case_open_yn">
+                            <option value="">선택하세요</option>
+                            <option value="Y">예</option>
+                            <option value="N">아니오</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!-- 빈 칸으로 두어 균형 맞춤 -->
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="support_type">지원형태</label>
-                    <select id="support_type" name="support_type">
-                        <option value="">선택하세요</option>
-                        <option value="방문">방문</option>
-                        <option value="원격">원격</option>
-                    </select>
+                
+                <!-- 세부작성 항목 -->
+                <div class="section-title">세부작성 항목</div>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="overview">개요</label>
+                        <textarea id="overview" name="overview" rows="3" placeholder="문제 상황의 전반적인 개요를 작성하세요"></textarea>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="case_open_yn">케이스오픈 여부</label>
-                    <select id="case_open_yn" name="case_open_yn">
-                        <option value="">선택하세요</option>
-                        <option value="Y">예</option>
-                        <option value="N">아니오</option>
-                    </select>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="cause_analysis">원인</label>
+                        <textarea id="cause_analysis" name="cause_analysis" rows="3" placeholder="문제 발생 원인 분석"></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <!-- 빈 칸으로 두어 균형 맞춤 -->
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="error_content">에러내용</label>
+                        <textarea id="error_content" name="error_content" rows="4" placeholder="발생한 에러 메시지나 증상을 상세히 기록하세요"></textarea>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- 세부작성 항목 -->
-            <div class="section-title">세부작성 항목</div>
-            
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="overview">개요</label>
-                    <textarea id="overview" name="overview" rows="3" placeholder="문제 상황의 전반적인 개요를 작성하세요"></textarea>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="action_taken">조치내용</label>
+                        <textarea id="action_taken" name="action_taken" rows="4" placeholder="문제 해결을 위해 수행한 조치사항을 기록하세요"></textarea>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="cause_analysis">원인</label>
-                    <textarea id="cause_analysis" name="cause_analysis" rows="3" placeholder="문제 발생 원인 분석"></textarea>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="script_content">스크립트</label>
+                        <textarea id="script_content" name="script_content" rows="6" placeholder="사용한 SQL문, 스크립트, 명령어 등을 기록하세요"></textarea>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="error_content">에러내용</label>
-                    <textarea id="error_content" name="error_content" rows="4" placeholder="발생한 에러 메시지나 증상을 상세히 기록하세요"></textarea>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="note">비고</label>
+                        <textarea id="note" name="note" rows="3" placeholder="추가 참고사항이나 특이사항을 기록하세요"></textarea>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="action_taken">조치내용</label>
-                    <textarea id="action_taken" name="action_taken" rows="4" placeholder="문제 해결을 위해 수행한 조치사항을 기록하세요"></textarea>
+                
+                <!-- 버튼 -->
+                <div class="button-group">
+                    <a href="${pageContext.request.contextPath}/troubleshooting?view=list" class="btn btn-cancel">취소</a>
+                    <button type="submit" class="btn btn-primary">등록하기</button>
                 </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="script_content">스크립트</label>
-                    <textarea id="script_content" name="script_content" rows="6" placeholder="사용한 SQL문, 스크립트, 명령어 등을 기록하세요"></textarea>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group full-width">
-                    <label for="note">비고</label>
-                    <textarea id="note" name="note" rows="3" placeholder="추가 참고사항이나 특이사항을 기록하세요"></textarea>
-                </div>
-            </div>
-            
-            <!-- 버튼 -->
-            <div class="button-group">
-                <a href="${pageContext.request.contextPath}/troubleshooting?view=list" class="btn btn-cancel">취소</a>
-                <button type="submit" class="btn btn-primary">등록하기</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 
 <style>
-/* 기본 레이아웃 */
-.container {
+/* 모든 스타일을 .add-page 클래스 하위로 제한 */
+.add-page .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.page-header {
+.add-page .page-header {
     margin-bottom: 30px;
     text-align: center;
 }
 
-.page-header h2 {
+.add-page .page-header h2 {
     color: #333;
     margin-bottom: 10px;
 }
 
-.page-header p {
+.add-page .page-header p {
     color: #666;
     margin: 0;
 }
 
 /* 폼 컨테이너 */
-.form-container {
+.add-page .form-container {
     background: white;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -175,7 +178,7 @@
 }
 
 /* 섹션 제목 */
-.section-title {
+.add-page .section-title {
     font-size: 16px;
     font-weight: bold;
     color: #333;
@@ -184,27 +187,27 @@
     border-bottom: 2px solid #007bff;
 }
 
-.section-title:first-child {
+.add-page .section-title:first-child {
     margin-top: 0;
 }
 
 /* 폼 행 */
-.form-row {
+.add-page .form-row {
     display: flex;
     gap: 20px;
     margin-bottom: 15px;
 }
 
-.form-group {
+.add-page .form-group {
     flex: 1;
 }
 
-.form-group.full-width {
+.add-page .form-group.full-width {
     flex: 1 1 100%;
 }
 
 /* 라벨 */
-.form-group label {
+.add-page .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: 500;
@@ -212,14 +215,14 @@
     font-size: 14px;
 }
 
-.required {
+.add-page .required {
     color: #dc3545;
 }
 
 /* 입력 필드 */
-.form-group input,
-.form-group select,
-.form-group textarea {
+.add-page .form-group input,
+.add-page .form-group select,
+.add-page .form-group textarea {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #ddd;
@@ -230,29 +233,29 @@
     box-sizing: border-box;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.add-page .form-group input:focus,
+.add-page .form-group select:focus,
+.add-page .form-group textarea:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
 }
 
-.form-group textarea {
+.add-page .form-group textarea {
     resize: vertical;
     min-height: 80px;
     font-family: monospace;
 }
 
 /* 버튼 그룹 */
-.button-group {
+.add-page .button-group {
     text-align: center;
     margin-top: 30px;
     padding-top: 20px;
     border-top: 1px solid #eee;
 }
 
-.btn {
+.add-page .btn {
     display: inline-block;
     padding: 12px 24px;
     margin: 0 5px;
@@ -265,34 +268,34 @@
     transition: all 0.2s;
 }
 
-.btn-primary {
+.add-page .btn-primary {
     background: #007bff;
     color: white;
 }
 
-.btn-primary:hover {
+.add-page .btn-primary:hover {
     background: #0056b3;
 }
 
-.btn-cancel {
+.add-page .btn-cancel {
     background: #6c757d;
     color: white;
 }
 
-.btn-cancel:hover {
+.add-page .btn-cancel:hover {
     background: #545b62;
     text-decoration: none;
 }
 
 /* 알림 메시지 */
-.alert {
+.add-page .alert {
     padding: 12px 16px;
     margin-bottom: 20px;
     border-radius: 4px;
     border: 1px solid transparent;
 }
 
-.alert-danger {
+.add-page .alert-danger {
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
@@ -300,28 +303,28 @@
 
 /* 반응형 */
 @media (max-width: 768px) {
-    .container {
+    .add-page .container {
         padding: 15px;
     }
     
-    .form-container {
+    .add-page .form-container {
         padding: 20px;
     }
     
-    .form-row {
+    .add-page .form-row {
         flex-direction: column;
         gap: 10px;
     }
     
-    .form-group {
+    .add-page .form-group {
         flex: none;
     }
     
-    .button-group {
+    .add-page .button-group {
         text-align: stretch;
     }
     
-    .btn {
+    .add-page .btn {
         display: block;
         width: 100%;
         margin: 5px 0;
