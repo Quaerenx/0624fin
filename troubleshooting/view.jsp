@@ -160,9 +160,10 @@
         border-bottom: 1px solid #f3f4f6;
     }
     
-    .detail-item:last-child {
-        border-bottom: none;
-    }
+	.detail-item:nth-last-child(1),
+	.detail-item:nth-last-child(2) {
+	    border-bottom: none;
+	}
     
     .detail-label {
         font-weight: 600;

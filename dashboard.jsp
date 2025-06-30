@@ -17,6 +17,11 @@
     color: #374151;
 }
 
+.main-content {
+    /* 또는 고정 높이로 */
+    min-height: 1000px;
+}
+
 .host-status-title {
     font-size: 1.4rem;
     font-weight: 700;
